@@ -1,6 +1,6 @@
 <?php
 
-require_once('../controllers/document.controller.php');
+require_once('../controllers/notification.controller.php');
 
 $method = $_SERVER["REQUEST_METHOD"];
 
@@ -8,9 +8,9 @@ switch ($method) {
     
     case 'GET':
         if (isset($_GET['id'])) {
-            echo json_encode(handleGetDocumentById($_GET['id']));
+            echo json_encode(handleGetNotificationById($_GET['id']));
         } else {
-            echo json_encode(handleGetAllDocuments());
+            echo json_encode(handleGetAllNotifications());
         }
         break;
     case 'POST':
@@ -19,9 +19,8 @@ switch ($method) {
 
         $title = $data->title;
         $desc = $data->desc;
-        $link = $data->link;
 
-        echo json_encode(handleCreateDocument($title, $desc, $link));
+        echo json_encode(handleCreateNotification($title, $desc));
         break;
     case 'PUT':
         $json = file_get_contents("php://input");
@@ -30,9 +29,8 @@ switch ($method) {
         $id = $data->id;
         $title = $data->title;
         $desc = $data->desc;
-        $link = $data->link;
 
-        echo json_encode(handleUpdateDocument($id, $title, $desc, $link));
+        echo json_encode(handleUpdateNotification($id, $title, $desc));
         break;
     case 'DELETE':
         $json = file_get_contents("php://input");
@@ -40,7 +38,7 @@ switch ($method) {
 
         $id = $data->id;
 
-        echo json_encode(handleDeleteDocument($id));
+        echo json_encode(handleDeleteNotification($id));
         break;
     default:
         

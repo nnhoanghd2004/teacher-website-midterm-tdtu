@@ -1,0 +1,62 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+	</head>
+	<body>
+		<button onclick="handleOnclick()">Click</button>
+		<script>
+			const handleOnclick = async () => {
+				let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/document.route.php';
+				// let option = {
+				// 	method: 'GET',
+				// 	headers: {
+				// 		'Content-Type': 'application/json',
+				// 	},
+				// };
+				// let option = {
+				// 	method: 'POST',
+				// 	headers: {
+				// 		'Content-Type': 'application/json',
+				// 	},
+				// 	body: JSON.stringify({
+				// 		title: 'Tài liệu CTRR',
+				// 		desc: 'Đây là tài liệu',
+				// 		link: 'rmit.com',
+				// 	}),
+				// };
+				// let option = {
+				// 	method: 'PUT',
+				// 	headers: {
+				// 		'Content-Type': 'application/json',
+				// 	},
+				// 	body: JSON.stringify({
+				// 		id: '1',
+				// 		title: 'Tài liệu CTRR',
+				// 		desc: 'Đây là tài liệu',
+				// 		link: 'rmit.com',
+				// 	}),
+				// };
+				let option = {
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						id: '4',
+					}),
+				};
+				let response = await fetch(url, option);
+				let data = await response.json();
+				console.log(data);
+			};
+		</script>
+	</body>
+</html>

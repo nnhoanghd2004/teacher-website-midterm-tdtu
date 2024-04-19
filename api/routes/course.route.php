@@ -1,6 +1,6 @@
 <?php
 
-require_once('../controllers/document.controller.php');
+require_once('../controllers/course.controller.php');
 
 $method = $_SERVER["REQUEST_METHOD"];
 
@@ -8,9 +8,9 @@ switch ($method) {
     
     case 'GET':
         if (isset($_GET['id'])) {
-            echo json_encode(handleGetDocumentById($_GET['id']));
+            echo json_encode(handleGetCourseById($_GET['id']));
         } else {
-            echo json_encode(handleGetAllDocuments());
+            echo json_encode(handleGetAllCourses());
         }
         break;
     case 'POST':
@@ -19,9 +19,9 @@ switch ($method) {
 
         $title = $data->title;
         $desc = $data->desc;
-        $link = $data->link;
+        $price = $data->price;
 
-        echo json_encode(handleCreateDocument($title, $desc, $link));
+        echo json_encode(handleCreateCourse($title, $desc, $price));
         break;
     case 'PUT':
         $json = file_get_contents("php://input");
@@ -30,9 +30,9 @@ switch ($method) {
         $id = $data->id;
         $title = $data->title;
         $desc = $data->desc;
-        $link = $data->link;
-
-        echo json_encode(handleUpdateDocument($id, $title, $desc, $link));
+        $price = $data->price;
+        
+        echo json_encode(handleUpdateCourse($id, $title, $desc, $price));
         break;
     case 'DELETE':
         $json = file_get_contents("php://input");
@@ -40,7 +40,7 @@ switch ($method) {
 
         $id = $data->id;
 
-        echo json_encode(handleDeleteDocument($id));
+        echo json_encode(handleDeleteCourse($id));
         break;
     default:
         
