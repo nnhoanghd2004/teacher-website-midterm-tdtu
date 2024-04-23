@@ -1,9 +1,14 @@
 <?php
+header('Content-Type: application/json');
+// Set CORS headers
+header('Access-Control-Allow-Origin: http://127.0.0.1:5500');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Authorization, Content-Type');
+header('Access-Control-Max-Age: 3600');
 
 require_once('../controllers/course.controller.php');
 
 $method = $_SERVER["REQUEST_METHOD"];
-
 switch ($method) {
     
     case 'GET':
@@ -19,9 +24,8 @@ switch ($method) {
 
         $title = $data->title;
         $desc = $data->desc;
-        $price = $data->price;
-
-        echo json_encode(handleCreateCourse($title, $desc, $price));
+        
+        echo json_encode(handleCreateCourse($title, $desc));
         break;
     case 'PUT':
         $json = file_get_contents("php://input");
@@ -30,9 +34,8 @@ switch ($method) {
         $id = $data->id;
         $title = $data->title;
         $desc = $data->desc;
-        $price = $data->price;
         
-        echo json_encode(handleUpdateCourse($id, $title, $desc, $price));
+        echo json_encode(handleUpdateCourse($id, $title, $desc));
         break;
     case 'DELETE':
         $json = file_get_contents("php://input");

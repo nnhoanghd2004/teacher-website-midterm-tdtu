@@ -1,4 +1,10 @@
 <?php
+header('Content-Type: application/json');
+// Set CORS headers
+header('Access-Control-Allow-Origin: http://127.0.0.1:5500');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Authorization, Content-Type');
+header('Access-Control-Max-Age: 3600');
 
 require_once('../controllers/news.controller.php');
 

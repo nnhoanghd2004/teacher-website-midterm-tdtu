@@ -1,0 +1,75 @@
+CREATE TABLE courses (
+  courseID int(11) NOT NULL AUTO_INCREMENT,
+  courseTitle varchar(255) NOT NULL,
+  courseDesc varchar(255) NOT NULL,
+  createdDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (courseID)
+);
+
+CREATE TABLE documents (
+  documentID int(11) NOT NULL AUTO_INCREMENT,
+  documentTitle varchar(255) NOT NULL,
+  documentDesc varchar(255) NOT NULL,
+  documentLink varchar(255) NOT NULL,
+  createdDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (documentID)
+);
+
+CREATE TABLE jobs (
+  jobID int(11) NOT NULL AUTO_INCREMENT,
+  jobTitle varchar(255) NOT NULL,
+  jobDesc varchar(255) NOT NULL,
+  createdDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (jobID)
+);
+
+CREATE TABLE news (
+  newsID int(11) NOT NULL AUTO_INCREMENT,
+  newsTitle varchar(255) NOT NULL,
+  newsDesc text NOT NULL,
+  createdDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (newsID)
+);
+
+CREATE TABLE notifications (
+  notificationID int(11) NOT NULL AUTO_INCREMENT,
+  notificationTitle varchar(255) NOT NULL,
+  notificationDesc varchar(255) NOT NULL,
+  createdDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatedDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (notificationID),
+);
+
+
+INSERT INTO courses (courseTitle, courseDesc)
+VALUES ('Web Development Fundamentals', 'Learn the basics of HTML, CSS, and JavaScript to build websites.'),
+       ('Data Analysis with Python', 'Master the tools and techniques for data cleaning, manipulation, and visualization using Python.'),
+       ('Machine Learning Crash Course', 'Get introduced to the core concepts of machine learning and explore popular algorithms.');
+
+INSERT INTO documents (documentTitle, documentDesc, documentLink)
+VALUES ('Software Development Documentation', 'A comprehensive guide to software development practices and methodologies.', 'https://www.altexsoft.com/blog/technical-documentation-in-software-development-types-best-practices-and-tools/'),
+       ('Marketing Strategy Guide', 'Tips and strategies for creating and implementing effective marketing campaigns.', 'https://www.semrush.com/blog/marketing-strategy/'),
+       ('Project Management for Beginners', 'Essential steps and best practices for managing projects successfully.', 'https://www.projectmanagement.com/pages/246882/PDUs-on-ProjectManagement-com');
+
+INSERT INTO documents (documentTitle, documentDesc, documentLink)
+VALUES ('Software Development Documentation', 'A comprehensive guide to software development practices and methodologies.', 'https://www.altexsoft.com/blog/technical-documentation-in-software-development-types-best-practices-and-tools/'),
+       ('Marketing Strategy Guide', 'Tips and strategies for creating and implementing effective marketing campaigns.', 'https://www.semrush.com/blog/marketing-strategy/'),
+       ('Project Management for Beginners', 'Essential steps and best practices for managing projects successfully.', 'https://www.projectmanagement.com/pages/246882/PDUs-on-ProjectManagement-com');
+
+INSERT INTO news (newsTitle, newsDesc)
+VALUES ('Company Announces New Product Launch', 'Our company is thrilled to announce the launch of our latest product, the XYZ. This innovative product will revolutionize the way you...'),
+       ('Industry Trends to Watch in 2024', 'Stay ahead of the curve by familiarizing yourself with the key trends shaping our industry in 2024. These trends include...'),
+       ('Team Achieves Major Milestone', 'We are proud to celebrate our team's accomplishment of achieving the ambitious goal of...');
+
+INSERT INTO notifications (notificationTitle, notificationDesc)
+VALUES ('New applicant for Software Engineer position', 'A new candidate has applied for the Software Engineer position. Please review their application.'),
+       ('Meeting reminder: Marketing team meeting', 'This is a friendly reminder about the upcoming marketing team meeting scheduled for...'),
+       ('Task due: Update project documentation', 'Don\'t forget to update the project documentation by the end of the day.');
+
+
+
+

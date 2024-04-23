@@ -3,6 +3,10 @@
 require_once('../configs/db.class.php');
 header('Content-Type: application/json; charset=utf-8');
 
+
+// Your PHP code to process requests...
+
+
 class Course {
     
 
@@ -52,11 +56,11 @@ class Course {
     }
 
 
-    function createCourse($title, $desc, $price) {
+    function createCourse($title, $desc) {
         try {
             $db = new DB();
-            $query = "INSERT INTO courses (courseTitle, courseDesc, coursePrice) 
-            VALUES ('$title', '$desc', '$price');";
+            $query = "INSERT INTO courses (courseTitle, courseDesc) 
+            VALUES ('$title', '$desc');";
             $data = $db->query_execute($query);
 
             return array (
@@ -76,13 +80,12 @@ class Course {
     }
 
 
-    function updateCourse($id, $title, $desc, $price) {
+    function updateCourse($id, $title, $desc) {
         try {
             $db = new DB();
             $query = "UPDATE courses
                 SET courseTitle = '$title',
-                    courseDesc = '$desc',
-                    coursePrice = '$price'
+                    courseDesc = '$desc'
                 WHERE courseID = $id;";
             $data = $db->query_execute($query);
             
@@ -97,7 +100,11 @@ class Course {
                 "status" => "400",
                 "messenge" => "Update course error",
                 "code"  => "",
-                "data" => null,
+                "data" => [
+                    "id" => $id,
+                    "title" => $title,
+                    "desc" => $desc,
+                ],
             );
         }
     }
