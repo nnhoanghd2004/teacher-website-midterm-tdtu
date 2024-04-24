@@ -29,6 +29,8 @@ const renderPage = async () => {
 			<tr>
 				<td>${i + 1}</td>
 				<td>${v.notificationTitle}</td>
+				<td>${v.createdDate}</td>
+				<td>${v.updatedDate}</td>
 				<td>
 					<button class="btn btn-danger btn-sm" onclick="deleteNotification(${v.notificationID})">Xóa</button>
 					<button class="btn btn-warning btn-sm" onclick="renderUpdate(${v.notificationID})">Chỉnh sửa</button>

@@ -30,8 +30,10 @@ const renderPage = async () => {
 				<td>${i + 1}</td>
 				<td>${v.documentTitle}</td>
 				<td>
-				<a href="${v.documentLink}" target="_blank">${v.documentLink}</a>
+					<a href="${v.documentLink}" target="_blank">${v.documentLink}</a>
 				</td>
+				<td>${v.createdDate}</td>
+				<td>${v.updatedDate}</td>
 				<td>
 					<button class="btn btn-danger btn-sm" onclick="deleteDocument(${v.documentID})">Xóa</button>  
 					<button class="btn btn-warning btn-sm" onclick="renderUpdate(${v.documentID})">Chỉnh sửa</button>

@@ -153,10 +153,12 @@ const renderDocuments = async () => {
                 />
                 <h5 class="card-title mt-2">${v.documentTitle}</h5>
                 <div class="content mt-1 text-truncate">
-                    ${v.documentDesc}
-                    <div>
-						<a href="${v.documentLink}" target="_blank">Liên kết</a>
+					<div>
+						${v.documentDesc}
 					</div>
+					<p class="card-text">
+						<a href="${v.documentLink}" target="_blank">Liên kết</a>
+					</p>
                     <div class="publish-date">
                         <span>${createdDate}</span>
                     </div>

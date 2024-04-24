@@ -44,8 +44,8 @@ const renderDocuments = async () => {
 							<p class="card-text">
 								${v.documentDesc}
 							</p>
-							<p> Liên kết tài liệu: 
-								<a href="${v.documentLink}" target="_blank">${v.documentLink}</a>
+							<p class="card-text">
+								Liên kết tài liệu: <a href="${v.documentLink}" target="_blank">${v.documentLink}</a>
 							</p>
 							<p class="card-text">
 								<small class="text-muted">${createdDate}</small>
