@@ -1,28 +1,32 @@
 <?php
 require_once("../models/job.model.php");
 
-function handleGetAllJobs() {
+function handleGetAllJobs()
+{
     $job = new Job();
     return $job->getAllJobs();
 }
 
-function handleGetJobById($id) {
+function handleGetJobById($id)
+{
     $job = new Job();
     return $job->getJobById($id);
 }
 
-function handleCreateJob($title, $desc) {
+function handleCreateJob($title, $desc, $content)
+{
     $job = new Job();
-    return $job->createJob($title, $desc);
+    return $job->createJob($title, $desc, $content);
 }
 
-function handleUpdateJob($id, $title, $desc) {
+function handleUpdateJob($id, $title, $desc, $content)
+{
     $job = new Job();
-    return $job->updateJob($id, $title, $desc);
+    return $job->updateJob($id, $title, $desc, $content);
 }
 
-function handleDeleteJob($id) {
+function handleDeleteJob($id)
+{
     $job = new Job();
     return $job->deleteJob($id);
 }
-?>

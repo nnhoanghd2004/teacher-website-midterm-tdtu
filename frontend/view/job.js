@@ -1,39 +1,40 @@
 /** @format */
 const getAllJobs = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/job.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/job.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 window.onload = async () => {
-	await renderPage();
+  await renderPage();
 };
 
 const renderPage = async () => {
-	renderJobs();
+  renderJobs();
 };
 
 const renderJobs = async () => {
-	let jobsHTML = document.getElementById('jobs');
-	let jobs = await getAllJobs();
-	let html = '';
+  let jobsHTML = document.getElementById("jobs");
+  let jobs = await getAllJobs();
+  let html = "";
 
-	jobs.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  jobs.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="card mb-5">
 				<div class="row g-0">
 					<div class="col-md-4">
 						<img
-							src="../img/demo-img.jpg"
+							src="../img/job.jpg"
 							class="img-fluid rounded-start"
 							alt="demo"
 						/>
@@ -55,8 +56,8 @@ const renderJobs = async () => {
 				</div>
 			</div>
             `;
-		}
-	});
+    }
+  });
 
-	jobsHTML.innerHTML = html;
+  jobsHTML.innerHTML = html;
 };

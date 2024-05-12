@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once('../configs/db.class.php');
 header('Content-Type: application/json; charset=utf-8');
@@ -7,23 +7,25 @@ header('Content-Type: application/json; charset=utf-8');
 // Your PHP code to process requests...
 
 
-class Course {
-    
+class Course
+{
 
-    function getAllCourses() {
+
+    function getAllCourses()
+    {
         try {
             $db = new DB();
             $query = "select * from courses";
             $data = $db->query_select($query);
 
-            return array (
+            return array(
                 "status" => "201",
                 "messenge" => "Get all courses success",
                 "code"  => "",
                 "data" => $data,
             );
         } catch (\Throwable $th) {
-            return array (
+            return array(
                 "status" => "400",
                 "messenge" => "Get all courses error",
                 "code"  => "",
@@ -33,20 +35,21 @@ class Course {
     }
 
 
-    function getCourseById($id) {
+    function getCourseById($id)
+    {
         try {
             $db = new DB();
             $query = "select * from courses where courseId = $id;";
             $data = $db->query_select($query);
 
-            return array (
+            return array(
                 "status" => "200",
                 "messenge" => "Get course by id success",
                 "code"  => "",
                 "data" => $data[0],
             );
         } catch (\Throwable $th) {
-            return array (
+            return array(
                 "status" => "400",
                 "messenge" => "Get course by id error",
                 "code"  => "",
@@ -56,21 +59,26 @@ class Course {
     }
 
 
-    function createCourse($title, $desc) {
+    function createCourse($title, $desc, $content)
+    {
         try {
-            $db = new DB();
-            $query = "INSERT INTO courses (courseTitle, courseDesc) 
-            VALUES ('$title', '$desc');";
-            $data = $db->query_execute($query);
+            $title = str_replace("'", "\'", $title);
+            $desc = str_replace("'", "\'", $desc);
+            $content = str_replace("'", "\'", $content);
 
-            return array (
+            $db = new DB();
+            $query = "INSERT INTO courses (courseTitle, courseDesc, courseContent) 
+            VALUES ('$title', '$desc', '$content');";
+            $db->query_execute($query);
+
+            return array(
                 "status" => "201",
                 "messenge" => "Create course success",
                 "code"  => "",
                 "data" => null,
             );
         } catch (\Throwable $th) {
-            return array (
+            return array(
                 "status" => "400",
                 "messenge" => "Create course error",
                 "code"  => "",
@@ -80,23 +88,29 @@ class Course {
     }
 
 
-    function updateCourse($id, $title, $desc) {
+    function updateCourse($id, $title, $desc, $content)
+    {
         try {
+            $title = str_replace("'", "\'", $title);
+            $desc = str_replace("'", "\'", $desc);
+            $content = str_replace("'", "\'", $content);
+
             $db = new DB();
             $query = "UPDATE courses
                 SET courseTitle = '$title',
-                    courseDesc = '$desc'
+                    courseDesc = '$desc',
+                    courseContent = '$content'
                 WHERE courseID = $id;";
             $data = $db->query_execute($query);
-            
-            return array (
+
+            return array(
                 "status" => "202",
                 "messenge" => "Update course success",
                 "code"  => "",
                 "data" => null,
             );
         } catch (\Throwable $th) {
-            return array (
+            return array(
                 "status" => "400",
                 "messenge" => "Update course error",
                 "code"  => "",
@@ -104,26 +118,28 @@ class Course {
                     "id" => $id,
                     "title" => $title,
                     "desc" => $desc,
+                    "content" => $content,
                 ],
             );
         }
     }
 
 
-    function deleteCourse($id) {
+    function deleteCourse($id)
+    {
         try {
             $db = new DB();
             $query = "DELETE FROM courses WHERE courseID = $id;";
             $data = $db->query_execute($query);
 
-            return array (
+            return array(
                 "status" => "202",
                 "messenge" => "Delete course success",
                 "code"  => "",
                 "data" => null,
             );
         } catch (\Throwable $th) {
-            return array (
+            return array(
                 "status" => "400",
                 "messenge" => "Delete course error",
                 "code"  => "",
@@ -132,4 +148,3 @@ class Course {
         }
     }
 }
-?>

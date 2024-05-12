@@ -11,14 +11,14 @@ function handleGetCourseById($id) {
     return $course->getCourseById($id);
 }
 
-function handleCreateCourse($title, $desc) {
+function handleCreateCourse($title, $desc, $content) {
     $course = new Course();
-    return $course->createCourse($title, $desc);
+    return $course->createCourse($title, $desc, $content);
 }
 
-function handleUpdateCourse($id, $title, $desc) {
+function handleUpdateCourse($id, $title, $desc, $content) {
     $course = new Course();
-    return $course->updateCourse($id, $title, $desc);
+    return $course->updateCourse($id, $title, $desc, $content);
 }
 
 function handleDeleteCourse($id) {

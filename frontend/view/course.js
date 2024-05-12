@@ -33,7 +33,7 @@ const renderCourses = async () => {
 				<div class="row g-0">
 					<div class="col-md-4">
 						<img
-							src="../img/demo-img.jpg"
+							src="../img/course.jpg"
 							class="img-fluid rounded-start"
 							alt="demo"
 						/>
@@ -46,9 +46,6 @@ const renderCourses = async () => {
 							</p>
 							<p class="card-text">
 								<small class="text-muted">${createdDate}</small>
-							</p>
-                            <p class="card-text fw-bold">
-								${v.coursePrice + ' vnd'}
 							</p>
 							<div class="more-info mt-3">
 								<a href="#">CHI TIẾT >>></a>

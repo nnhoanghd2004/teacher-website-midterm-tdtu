@@ -1,93 +1,98 @@
 /** @format */
 
 window.onload = async () => {
-	await renderPage();
+  await renderPage();
 };
 
 const getAllNews = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/news.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/news.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 const getAllCourses = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/course.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/course.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 const getAllDocuments = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/document.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/document.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 const getAllNotifications = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/notification.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/notification.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 const getAllJobs = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/job.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/job.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 const renderPage = async () => {
-	renderNews();
-	renderNotifications();
-	renderDocuments();
-	renderJobs();
-	renderCourses();
+  renderNews();
+  renderNotifications();
+  renderDocuments();
+  renderJobs();
+  renderCourses();
 };
 
 const renderNews = async () => {
-	let newsHTML = document.getElementById('news');
-	let news = await getAllNews();
-	let html = '';
+  let newsHTML = document.getElementById("news");
+  let news = await getAllNews();
+  let html = "";
 
-	news.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  news.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="col-4">
                 <img
-                    src="img/demo-img.jpg"
+                    src="img/news.jpg"
                     class="img-fluid"
                     alt="demo"
                 />
@@ -100,24 +105,24 @@ const renderNews = async () => {
                 </div>
             </div>
         `;
-		}
-	});
+    }
+  });
 
-	newsHTML.innerHTML = html;
+  newsHTML.innerHTML = html;
 };
 
 const renderNotifications = async () => {
-	let notificationsHTML = document.getElementById('notifications');
-	let notifications = await getAllNotifications();
-	let html = '';
+  let notificationsHTML = document.getElementById("notifications");
+  let notifications = await getAllNotifications();
+  let html = "";
 
-	notifications.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  notifications.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="col-4">
             <img
-            src="img/demo-img.jpg"
+            src="img/notification.jpg"
             class="img-fluid"
             alt="demo"
             />
@@ -130,24 +135,24 @@ const renderNotifications = async () => {
             </div>
             </div>
             `;
-		}
-	});
+    }
+  });
 
-	notificationsHTML.innerHTML = html;
+  notificationsHTML.innerHTML = html;
 };
 
 const renderDocuments = async () => {
-	let documentsHTML = document.getElementById('documents');
-	let documents = await getAllDocuments();
-	let html = '';
+  let documentsHTML = document.getElementById("documents");
+  let documents = await getAllDocuments();
+  let html = "";
 
-	documents.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  documents.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="col-4">
                 <img
-                    src="img/demo-img.jpg"
+                    src="img/document.jpg"
                     class="img-fluid"
                     alt="demo"
                 />
@@ -165,24 +170,24 @@ const renderDocuments = async () => {
                 </div>
             </div>
             `;
-		}
-	});
+    }
+  });
 
-	documentsHTML.innerHTML = html;
+  documentsHTML.innerHTML = html;
 };
 
 const renderJobs = async () => {
-	let jobsHTML = document.getElementById('jobs');
-	let jobs = await getAllJobs();
-	let html = '';
+  let jobsHTML = document.getElementById("jobs");
+  let jobs = await getAllJobs();
+  let html = "";
 
-	jobs.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  jobs.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="col-4">
                 <img
-                    src="img/demo-img.jpg"
+                    src="img/job.jpg"
                     class="img-fluid"
                     alt="demo"
                 />
@@ -195,21 +200,21 @@ const renderJobs = async () => {
                 </div>
             </div>
             `;
-		}
-	});
+    }
+  });
 
-	jobsHTML.innerHTML = html;
+  jobsHTML.innerHTML = html;
 };
 
 const renderCourses = async () => {
-	let coursesHTML = document.getElementById('courses');
-	let courses = await getAllCourses();
-	let html = '';
+  let coursesHTML = document.getElementById("courses");
+  let courses = await getAllCourses();
+  let html = "";
 
-	courses.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  courses.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="mt-3">
 				<i class="fa-solid fa-code"></i>
 				<span class="link-course fw-bold   ">${v.courseTitle}</span>
@@ -217,8 +222,8 @@ const renderCourses = async () => {
 
 			</div>
             `;
-		}
-	});
+    }
+  });
 
-	coursesHTML.innerHTML = html;
+  coursesHTML.innerHTML = html;
 };

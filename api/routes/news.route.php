@@ -11,7 +11,7 @@ require_once('../controllers/news.controller.php');
 $method = $_SERVER["REQUEST_METHOD"];
 
 switch ($method) {
-    
+
     case 'GET':
         if (isset($_GET['id'])) {
             echo json_encode(handleGetNewsById($_GET['id']));
@@ -25,8 +25,10 @@ switch ($method) {
 
         $title = $data->title;
         $desc = $data->desc;
+        $content = $data->content;
 
-        echo json_encode(handleCreateNews($title, $desc));
+
+        echo json_encode(handleCreateNews($title, $desc, $content));
         break;
     case 'PUT':
         $json = file_get_contents("php://input");
@@ -35,8 +37,9 @@ switch ($method) {
         $id = $data->id;
         $title = $data->title;
         $desc = $data->desc;
+        $content = $data->content;
 
-        echo json_encode(handleUpdateNews($id, $title, $desc));
+        echo json_encode(handleUpdateNews($id, $title, $desc, $content));
         break;
     case 'DELETE':
         $json = file_get_contents("php://input");
@@ -47,8 +50,6 @@ switch ($method) {
         echo json_encode(handleDeleteNews($id));
         break;
     default:
-        
+
         break;
 }
-
-?>

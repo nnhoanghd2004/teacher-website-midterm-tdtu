@@ -10,7 +10,7 @@ require_once('../controllers/course.controller.php');
 
 $method = $_SERVER["REQUEST_METHOD"];
 switch ($method) {
-    
+
     case 'GET':
         if (isset($_GET['id'])) {
             echo json_encode(handleGetCourseById($_GET['id']));
@@ -24,8 +24,9 @@ switch ($method) {
 
         $title = $data->title;
         $desc = $data->desc;
-        
-        echo json_encode(handleCreateCourse($title, $desc));
+        $content = $data->content;
+
+        echo json_encode(handleCreateCourse($title, $desc, $content));
         break;
     case 'PUT':
         $json = file_get_contents("php://input");
@@ -34,8 +35,9 @@ switch ($method) {
         $id = $data->id;
         $title = $data->title;
         $desc = $data->desc;
-        
-        echo json_encode(handleUpdateCourse($id, $title, $desc));
+        $content = $data->content;
+
+        echo json_encode(handleUpdateCourse($id, $title, $desc, $content));
         break;
     case 'DELETE':
         $json = file_get_contents("php://input");
@@ -46,8 +48,6 @@ switch ($method) {
         echo json_encode(handleDeleteCourse($id));
         break;
     default:
-        
+
         break;
 }
-
-?>

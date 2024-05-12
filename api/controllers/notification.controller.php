@@ -1,28 +1,32 @@
 <?php
 require_once("../models/notification.model.php");
 
-function handleGetAllNotifications() {
+function handleGetAllNotifications()
+{
     $notification = new Notification();
     return $notification->getAllNotifications();
 }
 
-function handleGetNotificationById($id) {
+function handleGetNotificationById($id)
+{
     $notification = new Notification();
     return $notification->getNotificationById($id);
 }
 
-function handleCreateNotification($title, $desc) {
+function handleCreateNotification($title, $desc, $content)
+{
     $notification = new Notification();
-    return $notification->createNotification($title, $desc);
+    return $notification->createNotification($title, $desc, $content);
 }
 
-function handleUpdateNotification($id, $title, $desc) {
+function handleUpdateNotification($id, $title, $desc, $content)
+{
     $notification = new Notification();
-    return $notification->updateNotification($id, $title, $desc);
+    return $notification->updateNotification($id, $title, $desc, $content);
 }
 
-function handleDeleteNotification($id) {
+function handleDeleteNotification($id)
+{
     $notification = new Notification();
     return $notification->deleteNotification($id);
 }
-?>

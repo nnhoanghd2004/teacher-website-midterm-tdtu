@@ -1,39 +1,40 @@
 /** @format */
 const getAllNews = async () => {
-	let url = 'http://localhost/teacher-website-midterm-tdtu/api/routes/news.route.php';
-	let option = {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	};
-	let response = await fetch(url, option);
-	let data = await response.json();
-	return data.data;
+  let url =
+    "http://localhost/teacher-website-midterm-tdtu/api/routes/news.route.php";
+  let option = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(url, option);
+  let data = await response.json();
+  return data.data;
 };
 
 window.onload = async () => {
-	await renderPage();
+  await renderPage();
 };
 
 const renderPage = async () => {
-	renderNews();
+  renderNews();
 };
 
 const renderNews = async () => {
-	let newsHTML = document.getElementById('news');
-	let news = await getAllNews();
-	let html = '';
+  let newsHTML = document.getElementById("news");
+  let news = await getAllNews();
+  let html = "";
 
-	news.reverse().map((v, i) => {
-		if (i < 3) {
-			createdDate = v.createdDate.slice(0, 10).split('-').reverse().join('/');
-			html += `
+  news.reverse().map((v, i) => {
+    if (i < 3) {
+      createdDate = v.createdDate.slice(0, 10).split("-").reverse().join("/");
+      html += `
             <div class="card mb-5">
 				<div class="row g-0">
 					<div class="col-md-4">
 						<img
-							src="../img/demo-img.jpg"
+							src="../img/news.jpg"
 							class="img-fluid rounded-start"
 							alt="demo"
 						/>
@@ -55,8 +56,8 @@ const renderNews = async () => {
 				</div>
 			</div>
             `;
-		}
-	});
+    }
+  });
 
-	newsHTML.innerHTML = html;
+  newsHTML.innerHTML = html;
 };
